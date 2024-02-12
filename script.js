@@ -1,21 +1,55 @@
 const perguntas = document.querySelectorAll("dt");
-const respostas = document.querySelectorAll("dd");/* 
-const icone = document.querySelectorAll('dl img'); */
+const respostas = document.querySelectorAll("dd");
+const icones = document.querySelectorAll(".dtHeader img");
 
-function ativarPergunta(event) {
+function initFAQ() {
+  icones[0].src = "/assets/images/icon-minus.svg";
 
-  respostas.forEach((item) => {
-    item.classList.remove("ativo");
-  });
+  function ativarPergunta(event) {
+    perguntas.forEach((item) => {
+      item.classList.remove("ativo");
+    });
+
+    respostas.forEach((item) => {
+      item.classList.remove("ativo");
+    });
+
+    icones.forEach((item) => {
+      item.src = "/assets/images/icon-plus.svg";
+    });
+
+    const indexPergunta = Array.from(perguntas).indexOf(event.target);
+
+    event.target.classList.toggle("ativo");
+    respostas[indexPergunta].classList.toggle("ativo");
+    icones[indexPergunta].src = "/assets/images/icon-minus.svg";
+  }
+
   perguntas.forEach((item) => {
-    item.classList.remove("ativo");
+    item.addEventListener("click", ativarPergunta);
   });
 
-  event.target.classList.toggle("ativo");
-  event.target.nextElementSibling.classList.toggle("ativo");
-}
+  function ativarIcone(event) {
+    perguntas.forEach((item) => {
+      item.classList.remove("ativo");
+    });
 
-perguntas.forEach((item) => {
-  item.addEventListener("click", ativarPergunta);
-/*   item.addEventListener('click', ativarResposta) */
-});
+    respostas.forEach((item) => {
+      item.classList.remove("ativo");
+    });
+
+    icones.forEach((item) => {
+      item.src = "/assets/images/icon-plus.svg";
+    });
+
+    const indexIcone = Array.from(icones).indexOf(event.target);
+    perguntas[indexIcone].classList.toggle("ativo");
+    respostas[indexIcone].classList.toggle("ativo");
+    event.target.src = "/assets/images/icon-minus.svg";
+  }
+
+  icones.forEach((item) => {
+    item.addEventListener("click", ativarIcone);
+  });
+}
+initFAQ();
