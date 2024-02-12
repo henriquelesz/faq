@@ -3,7 +3,7 @@ const respostas = document.querySelectorAll("dd");
 const icones = document.querySelectorAll(".dtHeader img");
 
 function initFAQ() {
-  icones[0].src = "/assets/images/icon-minus.svg";
+  icones[0].src = "assets/images/icon-minus.svg";
 
   function ativarPergunta(event) {
     perguntas.forEach((item) => {
@@ -15,14 +15,14 @@ function initFAQ() {
     });
 
     icones.forEach((item) => {
-      item.src = "/assets/images/icon-plus.svg";
+      item.src = "assets/images/icon-plus.svg";
     });
 
     const indexPergunta = Array.from(perguntas).indexOf(event.target);
 
     event.target.classList.toggle("ativo");
     respostas[indexPergunta].classList.toggle("ativo");
-    icones[indexPergunta].src = "/assets/images/icon-minus.svg";
+    icones[indexPergunta].src = "assets/images/icon-minus.svg";
   }
 
   perguntas.forEach((item) => {
@@ -39,13 +39,13 @@ function initFAQ() {
     });
 
     icones.forEach((item) => {
-      item.src = "/assets/images/icon-plus.svg";
+      item.src = "assets/images/icon-plus.svg";
     });
 
     const indexIcone = Array.from(icones).indexOf(event.target);
     perguntas[indexIcone].classList.toggle("ativo");
     respostas[indexIcone].classList.toggle("ativo");
-    event.target.src = "/assets/images/icon-minus.svg";
+    event.target.src = "assets/images/icon-minus.svg";
   }
 
   icones.forEach((item) => {
